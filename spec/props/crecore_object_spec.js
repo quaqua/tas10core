@@ -1,17 +1,17 @@
 var vows = require('vows')
   , assert = require('assert')
-  , CrecoreObject = require( __dirname + '/../../lib/props/crecore_object' );
+  , CreioObject = require( __dirname + '/../../lib/props/creio_object' );
 
-vows.describe('CrecoreObject').addBatch({
+vows.describe('CreioObject').addBatch({
 
   "an object stays an object new({name: 'a'})": function(){
-    var value = CrecoreObject.new({name: 'a'});
+    var value = CreioObject.new({name: 'a'});
     assert.typeOf( value.getValue(), 'object' );
     assert.deepEqual( value.getValue(), {name: 'a'} );
   },
 
   "nothing can be converted into an object new(2)": function(){
-    assert.throws( function(){ CrecoreObject.new(2) }, Error );
+    assert.throws( function(){ CreioObject.new(2) }, Error );
   }
 
 

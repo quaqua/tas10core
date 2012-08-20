@@ -1,7 +1,7 @@
 var vows = require('vows')
   , assert = require('assert')
   , Property = require( __dirname + '/../../lib/props/property' )
-  , CrecoreInt = require( __dirname + '/../../lib/props/crecore_int' );
+  , CreioInt = require( __dirname + '/../../lib/props/creio_int' );
 
 vows.describe('Properties').addBatch({
 

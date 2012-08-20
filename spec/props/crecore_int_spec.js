@@ -1,21 +1,21 @@
 var vows = require('vows')
   , assert = require('assert')
-  , CrecoreInt = require( __dirname + '/../../lib/props/crecore_int' );
+  , CreioInt = require( __dirname + '/../../lib/props/creio_int' );
 
-vows.describe('CrecoreInt').addBatch({
+vows.describe('CreioInt').addBatch({
 
   "a number stays a number new(2)": function(){
-    var value = CrecoreInt.new(2);
+    var value = CreioInt.new(2);
     assert.typeOf( value.getValue(), 'number' );
   },
 
   "a string gets casted into a number new('2')": function(){
-    var value = CrecoreInt.new('2');
+    var value = CreioInt.new('2');
     assert.typeOf( value.getValue(), 'number' );
   },
 
   "an object cannot be casted into a number new({})": function(){
-    assert.throws( function(){ CrecoreInt.new({}) }, Error );
+    assert.throws( function(){ CreioInt.new({}) }, Error );
   }
 
 }).export(module);

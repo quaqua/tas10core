@@ -1,14 +1,14 @@
 var vows = require('vows')
   , assert = require('assert')
-  , crecore = require('../../index')
+  , creio = require('../../index')
   , Model = require('../../lib/model');
 
-crecore.connect('mongodb://localhost:27017/testCrecore');
+creio.connect('mongodb://localhost:27017/testCreio');
 
 vows.describe('Mongo basics').addBatch({
 
 	"setup the connection": function(){
-    	crecore.connect('mongodb://localhost:27017/testCrecore')
+    	creio.connect('mongodb://localhost:27017/testCreio')
   	}
 
 }).export(module);

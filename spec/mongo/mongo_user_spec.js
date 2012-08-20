@@ -10,9 +10,9 @@
 
 var vows = require('vows')
   , assert = require('assert')
-  , crecore = require('../../index');
+  , creio = require('../../index');
 
-crecore.connect('mongodb://localhost:27017/testCrecore');
+creio.connect('mongodb://localhost:27017/testCreio');
 
 var User = require('../../lib/models/user');
 
@@ -145,12 +145,12 @@ vows.describe('mongo tas10core User').addBatch({
         }
 
     }
-/*
+
 }).addBatch({
 
     "counting users after update": {
 
-        topic: function(){ User.count( this.callback ); },
+        topic: function(){ User.query().count( this.callback ); },
 
         "count === 1": function( err, count ){
             assert.equal( count, 1 );
@@ -167,7 +167,7 @@ vows.describe('mongo tas10core User').addBatch({
         }
 
     }
-
+/*
 }).addBatch({
 
     "DESTROYING a User": {

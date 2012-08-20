@@ -1,9 +1,9 @@
 var vows = require('vows')
   , assert = require('assert')
   , Query = require('../../lib/adapters/mongo/query')
-  , crecore = require('../../index')
+  , creio = require('../../index')
   , moment = require('moment')
-  , conn = crecore.connect( 'mongodb://localhost:27017/testCrecore' )
+  , conn = creio.connect( 'mongodb://localhost:27017/testCreio' )
   , User = require('../../lib/models/user');
 
 vows.describe('Query Object').addBatch({

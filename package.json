@@ -1,10 +1,10 @@
 {
   "private": true,
-  "name": "crecore",
+  "name": "creio",
   "preferGlobal": "true",
   "version": "0.99.1",
   "author": "thorsten zerha <thorsten.zerha@tastenwerk.com>",
-  "description": "CRECORE is a database mapper to SQL or MONGO with content repository functionality",
+  "description": "creIO is a database mapper to SQL or MONGO with content repository functionality",
   "scripts": {
     "test": "vows --spec spec/*_spec.js spec/**/*_spec.js"
   },

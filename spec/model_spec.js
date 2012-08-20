@@ -1,7 +1,6 @@
 var vows = require('vows')
   , assert = require('assert')
-  , Model = require( __dirname + '/../lib/model' )
-  , ObjectId = require('mongodb').BSONPure.ObjectID;
+  , Model = require( __dirname + '/../lib/model' );
 
 vows.describe('Model').addBatch({
 
