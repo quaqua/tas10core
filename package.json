@@ -9,7 +9,8 @@
     "test": "vows --spec spec/*_spec.js spec/**/*_spec.js"
   },
   "dependencies" : {
-    "mongodb"  :  "*",
+    "mongodb"  :  "1.x",
+    "mongoskin": "0.x",
     "moment": "x.x.x",
     "sha1": "*"
   },

@@ -52,6 +52,28 @@ vows.describe('Model inheritance').addBatch({
 
     },
 
+    "Plain can define custom properties": {
+
+      "CrecoreString property": function( Plain ){
+        Plain.schema('description');
+        assert.isObject( Plain.schema().description );
+        assert.isUndefined( Plain.new().description ); // due we did not set a default value
+      },
+
+      "CrecoreString property explicitely declaration": function( Plain ){
+        Plain.schema({ desc2: CrecoreString });
+        assert.isObject( Plain.schema().desc2 );
+        assert.isUndefined( Plain.new().desc2 ); // due we did not set a default value
+      },
+
+      "CrecoreString property with options": function( Plain ){
+        Plain.schema({ desc3: { type: CrecoreString, default: 'description' }});
+        assert.isObject( Plain.schema().desc3 );
+        assert.isString( Plain.new().desc3 );
+      }
+
+    },
+
     "baseSchema properties are 'protected'": function( Plain ){
       assert.throws( function(){ Plain.schema({ acl: {type: CrecoreString} }); }, Error );
     },
