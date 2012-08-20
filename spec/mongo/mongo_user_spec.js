@@ -167,7 +167,7 @@ vows.describe('mongo tas10core User').addBatch({
         }
 
     }
-/*
+
 }).addBatch({
 
     "DESTROYING a User": {
@@ -179,7 +179,7 @@ vows.describe('mongo tas10core User').addBatch({
             topic: function( user ){ user.destroy( this.callback ); },
 
             "user is now marked deleted": function( err, user ){
-                assert.isTrue( user.deleted );
+                assert.isTrue( user.isDeleted() );
             }
 
         }
@@ -190,11 +190,11 @@ vows.describe('mongo tas10core User').addBatch({
 
     "counting users after destroy": {
 
-        topic: function(){ User.count( this.callback ); },
+        topic: function(){ User.query().count( this.callback ); },
 
         "no more users in database": function( err, count ){
             assert.equal( count, 0 );
         }
     }
-*/
+
 }).export(module);
