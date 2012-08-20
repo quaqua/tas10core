@@ -69,13 +69,13 @@ vows.describe('mongo tas10core User').addBatch({
             },
 
             "new user got a modification timestamp attribute set": function( err, user ){
-                //assert.typeOf( user.history[0].at, 'date' );
+                assert.typeOf( user.history[0].at, 'date' );
             },
 
         }
 
     }
-/*
+
 }).addBatch({
 
     "FINDING a User": {
@@ -87,7 +87,7 @@ vows.describe('mongo tas10core User').addBatch({
         },
 
         "result still returns className == 'User'": function( err, user ){
-            assert.equal( user.constructor.className, 'User' );
+            assert.equal( user.constructor.name, 'User' );
         },
 
         "result has all attributes (name, email, ...) set as before": function( err, user ){
@@ -96,15 +96,11 @@ vows.describe('mongo tas10core User').addBatch({
         },
 
         "result is not a new record": function( err, user ){
-            assert.isFalse( user.newRecord );
-        },
-
-        "result is persisted": function( err, user ){
-            assert.isTrue( user.persisted );
+            assert.isFalse( user.isNewRecord() );
         },
 
         "result is not marked deleted": function( err, user ){
-            assert.isFalse( user.deleted );
+            assert.isFalse( user.isDeleted() );
         },
 
         "result does not have password stored": function( err, user ){
@@ -121,7 +117,7 @@ vows.describe('mongo tas10core User').addBatch({
 
     "UPDATING a User": {
 
-        topic: function(){ User.count( this.callback ); },
+        topic: function(){ User.query().count( this.callback ); },
 
         "initial count === 1": function( err, count ){
             assert.equal( count, 1 );
@@ -149,7 +145,7 @@ vows.describe('mongo tas10core User').addBatch({
         }
 
     }
-
+/*
 }).addBatch({
 
     "counting users after update": {

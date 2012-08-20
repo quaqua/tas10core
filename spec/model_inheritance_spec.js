@@ -20,34 +20,34 @@ vows.describe('Model inheritance').addBatch({
     },
 
     "instance of Plain has a props property": function( Plain ){
-      assert.isObject( Plain.new().props );
+      assert.isObject( Plain.new()._props );
     },
 
     "Plain with no args gets baseSchema set anyway": {
 
       "name": function( Plain ){
-        assert.isObject( Plain.new().props.name );
-        assert.instanceOf( Plain.new().props.name, CrecoreString );
+        assert.isObject( Plain.new()._props.name );
+        assert.instanceOf( Plain.new()._props.name, CrecoreString );
       },
 
       "className": function( Plain ){
-        assert.isObject( Plain.new().props.className );
-        assert.instanceOf( Plain.new().props.className, CrecoreString );
+        assert.isObject( Plain.new()._props.className );
+        assert.instanceOf( Plain.new()._props.className, CrecoreString );
       },
 
       "acl": function( Plain ){
-        assert.isObject( Plain.new().props.acl );
-        assert.instanceOf( Plain.new().props.acl, CrecoreObject );
+        assert.isObject( Plain.new()._props.acl );
+        assert.instanceOf( Plain.new()._props.acl, CrecoreObject );
       },
 
       "labels": function( Plain ){
-        assert.isObject( Plain.new().props.labels );
-        assert.instanceOf( Plain.new().props.labels, CrecoreArray );
+        assert.isObject( Plain.new()._props.labels );
+        assert.instanceOf( Plain.new()._props.labels, CrecoreArray );
       },
 
       "history": function( Plain ){
-        assert.isObject( Plain.new().props.history );
-        assert.instanceOf( Plain.new().props.history, CrecoreArray );
+        assert.isObject( Plain.new()._props.history );
+        assert.instanceOf( Plain.new()._props.history, CrecoreArray );
       }
 
     },
