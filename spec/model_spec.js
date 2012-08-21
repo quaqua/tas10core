@@ -2,16 +2,19 @@ var vows = require('vows')
   , assert = require('assert')
   , Model = require( __dirname + '/../lib/model' );
 
-vows.describe('Model').addBatch({
+var Plain = function Plain(){}
+Plain.inherits( Model );
+
+vows.describe('Plain').addBatch({
 
   "has a constructor which can be called with": {
     "no arguments": function(){
-      var m = Model.new();
-      assert.instanceOf( m, Model );
+      var m = Plain.new();
+      assert.instanceOf( m, Plain );
     },
     "property object as one argument": function(){
-      var m = Model.new( {name: 'test'} );
-      assert.instanceOf( m, Model );
+      var m = Plain.new( {name: 'test'} );
+      assert.instanceOf( m, Plain );
       assert.equal( m.name, 'test' );
     }
   },
@@ -19,23 +22,23 @@ vows.describe('Model').addBatch({
   "class properties": {
 
     "name": function(){
-      assert.typeOf( Model.name, 'string' );
-      assert.equal( Model.name, 'Model' );
+      assert.typeOf( Plain.name, 'string' );
+      assert.equal( Plain.name, 'Plain' );
     },
 
     "validations": function(){
-      assert.typeOf( Model.validations, 'array' );
+      assert.typeOf( Plain.validations, 'array' );
     },
 
     "hooks": function(){
-      assert.typeOf( Model.hooks, 'object');
+      assert.typeOf( Plain.hooks, 'object');
     }
 
   },
 
   "instance properties": {
 
-    topic: function(){ return Model.new(); },
+    topic: function(){ return Plain.new(); },
 
     "name": function( model ){
       assert.isNull( model.name );
@@ -57,15 +60,14 @@ vows.describe('Model').addBatch({
 
   "instance methods": {
 
-    topic: function(){ return Model.new({name: 'm'}); },
+    topic: function(){ return Plain.new({name: 'm'}); },
 
     "toJSON": function( model ){
       var json = model.toJSON();
       assert.equal( json.name, 'm' );
-      assert.deepEqual( json.acl, {} );
       assert.deepEqual( json.label_ids, [] );
       assert.equal( json.position, 999 );
-      assert.equal( json.className, 'Model' );
+      assert.equal( json.className, 'Plain' );
     }
 
   }

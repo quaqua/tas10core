@@ -46,6 +46,7 @@ vows.describe('User').addBatch({
             topic: function( user ){ user.save( this.callback ); },
 
             "new user is now persisted to the database": function( err, user ){
+                console.log( user.stack );
                 assert.isFalse( user.isNewRecord() );
                 assert.isFalse( user.isDeleted() );
             },
