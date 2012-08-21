@@ -112,13 +112,15 @@ vows.describe('Access Control').addBatch({
 	}
 
 }).addBatch({
-/*
+
 	"Default Documents Access Control": {
 
 		topic: function() { var doc = Plain.new(uA, docProps); doc.save( this.callback ); },
 
 		"creator gets full access": function( err, document ){
-			assert.deepEqual( document.acl[uA._id], {privileges: 'rwsd', photoPath: null, name: 'uAA'} );
+			// for( var i in Plain.schema() ){ console.log( Plain.schema()[i].default ); }
+			// console.log( document.history );
+			assert.deepEqual( document.acl[uA._id], {privileges: 'rwsd', photoPath: undefined, name: 'uAA'} );
 		},
 
 		"new document gets history set up with creaotor": function( err, document ){
@@ -129,7 +131,7 @@ vows.describe('Access Control').addBatch({
 	}
 
 }).addBatch({
-
+/**
 	"Querying for document owner": {
 
 		topic: function() { Plain.query(uA).where('name', docProps.name).first( this.callback ); },

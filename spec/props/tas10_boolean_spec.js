@@ -5,15 +5,15 @@ var vows = require('vows')
 vows.describe('Tas10Boolean').addBatch({
 
   "a boolean stays a boolean new(true)": function(){
-    var value = Tas10Boolean.new( true );
-    assert.typeOf( value.getValue(), 'boolean' );
-    assert.equal( value.getValue(), true );
+    var value = Tas10Boolean( true );
+    assert.typeOf( value, 'boolean' );
+    assert.equal( value, true );
   },
 
   "a string will be casted into a boolean if /true|t|TRUE|T/": function(){
-    var value = Tas10Boolean.new( "true" );
-    assert.typeOf( value.getValue(), 'boolean' );
-    assert.equal( value.getValue(), true );
+    var value = Tas10Boolean( "true" );
+    assert.typeOf( value, 'boolean' );
+    assert.equal( value, true );
   }
 
 }).export(module);

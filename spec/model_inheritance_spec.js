@@ -20,34 +20,29 @@ vows.describe('Model inheritance').addBatch({
     },
 
     "instance of Plain has a props property": function( Plain ){
-      assert.isObject( Plain.new()._props );
+      assert.isArray( Plain.new()._fields );
     },
 
     "Plain with no args gets baseSchema set anyway": {
 
       "name": function( Plain ){
-        assert.isObject( Plain.new()._props.name );
-        assert.instanceOf( Plain.new()._props.name, Tas10String );
+        assert.isNull( Plain.new()['name'] );
       },
 
       "className": function( Plain ){
-        assert.isObject( Plain.new()._props.className );
-        assert.instanceOf( Plain.new()._props.className, Tas10String );
+        assert.isString( Plain.new()['className'] );
       },
 
       "acl": function( Plain ){
-        assert.isObject( Plain.new()._props.acl );
-        assert.instanceOf( Plain.new()._props.acl, Tas10Object );
+        assert.isObject( Plain.new().acl );
       },
 
       "label_ids": function( Plain ){
-        assert.isObject( Plain.new()._props.label_ids );
-        assert.instanceOf( Plain.new()._props.label_ids, Tas10Array );
+        assert.isArray( Plain.new().label_ids );
       },
 
       "history": function( Plain ){
-        assert.isObject( Plain.new()._props.history );
-        assert.instanceOf( Plain.new()._props.history, Tas10Array );
+        assert.isArray( Plain.new().history );
       }
 
     },
@@ -67,7 +62,7 @@ vows.describe('Model inheritance').addBatch({
       },
 
       "Tas10String property with options": function( Plain ){
-        Plain.schema({ desc3: { type: Tas10String, default: 'description' }});
+        Plain.schema({ desc3: { type: Tas10String, default: function(){ return 'description' } }});
         assert.isObject( Plain.schema().desc3 );
         assert.isString( Plain.new().desc3 );
       }

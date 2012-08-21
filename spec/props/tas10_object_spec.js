@@ -5,13 +5,13 @@ var vows = require('vows')
 vows.describe('Tas10Object').addBatch({
 
   "an object stays an object new({name: 'a'})": function(){
-    var value = Tas10Object.new({name: 'a'});
-    assert.typeOf( value.getValue(), 'object' );
-    assert.deepEqual( value.getValue(), {name: 'a'} );
+    var value = Tas10Object({name: 'a'});
+    assert.typeOf( value, 'object' );
+    assert.deepEqual( value, {name: 'a'} );
   },
 
   "nothing can be converted into an object new(2)": function(){
-    assert.throws( function(){ Tas10Object.new(2) }, Error );
+    assert.throws( function(){ Tas10Object(2) }, Error );
   }
 
 

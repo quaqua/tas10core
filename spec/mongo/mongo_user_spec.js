@@ -127,6 +127,7 @@ vows.describe('User').addBatch({
                     topic: function( user ){ user.save( this.callback ); },
 
                     "if save is successful, new user object is returned": function( err, user ){
+                        console.log(user.stack);
                         assert.equal( user.name, 'other' );
                     }
                 }
