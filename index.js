@@ -2,7 +2,8 @@ var RepositoryLogger = require( __dirname + '/lib/repository_logger' );
 
 var _db
   , _logfile = './tas10io.log'
-  , _Model = require( __dirname + '/lib/model' );
+  , _Model = require( __dirname + '/lib/model' )
+  , _Analytics = require( __dirname + '/lib/analytics' );
 
 module.exports.connect = function( url ){
 
@@ -10,6 +11,9 @@ module.exports.connect = function( url ){
 
 		var mongoAdapter = require( __dirname + '/lib/adapters/mongo' );
 		_db = mongoAdapter.connect( url.replace('mongodb://','')  );
+
+		_Analytics = require( __dirname + '/lib/adapters/mongo/analytics' )( _Analytics,
+			_db, new RepositoryLogger( _logfile ) );
 
 		_Model = require( __dirname + '/lib/adapters/mongo/extend_model')( _Model, 
 			_db, new RepositoryLogger( _logfile ) );

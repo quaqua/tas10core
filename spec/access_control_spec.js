@@ -131,7 +131,7 @@ vows.describe('Access Control').addBatch({
 	}
 
 }).addBatch({
-/**
+
 	"Querying for document owner": {
 
 		topic: function() { Plain.query(uA).where('name', docProps.name).first( this.callback ); },
@@ -259,7 +259,7 @@ vows.describe('Access Control').addBatch({
 				document.save(function(){});
 			} catch( e ){
 				assert.equal( e.name, "AccessError" );
-				assert.equal( e.message, "User uB has only access (r) for document: " + docProps.name);
+				assert.equal( e.message, "User uBB has only access (r) for document: " + docProps.name);
 			}
 		},
 
@@ -270,7 +270,7 @@ vows.describe('Access Control').addBatch({
 		"AccessError gives details about why uB cannot share object": function( document ){
 			try{ document.share(uAA, 'r', function(){}); } catch(e){ 
 				assert.equal( e.name, "AccessError" );
-				assert.equal( e.message, "User uB has only access (r) for document: " + docProps.name + " - will not share this document!");
+				assert.equal( e.message, "User uBB has only access (r) for document: " + docProps.name + " - will not share this document!");
 			}
 		},
 
@@ -281,12 +281,12 @@ vows.describe('Access Control').addBatch({
 		"AccessError gives details about why uB cannot share object": function( document ){
 			try{ document.share(uA, 'r', function(){}); } catch(e){ 
 				assert.equal( e.name, "AccessError" );
-				assert.equal( e.message, "User uB has only access (r) for document: " + docProps.name + " - will not share this document!");
+				assert.equal( e.message, "User uBB has only access (r) for document: " + docProps.name + " - will not share this document!");
 			}
 		}
 
 	}
-	
+
 }).addBatch({
 
 	"preparation for uB WRITE ACCESS": {
@@ -340,7 +340,7 @@ vows.describe('Access Control').addBatch({
 		"AccessError gives details about why uB cannot share object": function( document ){
 			try{ document.share(uA, 'r', function(){}); } catch(e){ 
 				assert.equal( e.name, "AccessError" );
-				assert.equal( e.message, "User uB has only access (rw) for document: " + docProps.name + " - will not share this document!");
+				assert.equal( e.message, "User uBB has only access (rw) for document: " + docProps.name + " - will not share this document!");
 			}
 		}
 	}
@@ -427,17 +427,12 @@ vows.describe('Access Control').addBatch({
 
 		"uB can write document changes": {
 
-			topic: function( document){ document.save( this.callback ) }
-
-			/*
-			 * strange behaviour since before.destroy safely remove taggers has been implemented
-			 *,
+			topic: function( document){ document.save( this.callback ) },
 
 			"document is saved to the database": function( err, document ){
 				assert.instanceOf( document, Plain );
 			}
-			*/
-			/*
+			
 		},
 
 		"document can be shared with other users": function( err, document ){
@@ -449,7 +444,7 @@ vows.describe('Access Control').addBatch({
 			topic: function( document ){ document.destroy( this.callback ); },
 
 			"document is marked deleted": function( err, document ){
-				assert.isTrue(document.deleted);
+				assert.isTrue(document.isDeleted() );
 			},
 
 			"Querying for deleted document": {
@@ -460,5 +455,5 @@ vows.describe('Access Control').addBatch({
 			}
 		}
 	}
-*/
+
 }).export(module);
