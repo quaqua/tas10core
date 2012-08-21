@@ -1,13 +1,3 @@
-/* 
- * tas10core by TASTENWERK
- * author: thorsten.zerha@tastenwerk.com
- * 
- * copyright (2012) by TASTENWERK e.U.
- *
- * http://www.tastenwerk.com/tas10core
- * 
- */
-
 var vows = require('vows')
   , assert = require('assert')
   , tas10io = require('../../index');
@@ -18,7 +8,7 @@ var User = require('../../lib/models/user');
 
 var userProps = { name: 'user1', password: 'test123', email: 'eamil@localhost.loc' };
 
-vows.describe('mongo tas10core User').addBatch({
+vows.describe('User').addBatch({
 
     "reset the users collection to get an empty starting point": {
 

@@ -40,9 +40,9 @@ vows.describe('Model inheritance').addBatch({
         assert.instanceOf( Plain.new()._props.acl, Tas10Object );
       },
 
-      "labels": function( Plain ){
-        assert.isObject( Plain.new()._props.labels );
-        assert.instanceOf( Plain.new()._props.labels, Tas10Array );
+      "label_ids": function( Plain ){
+        assert.isObject( Plain.new()._props.label_ids );
+        assert.instanceOf( Plain.new()._props.label_ids, Tas10Array );
       },
 
       "history": function( Plain ){
