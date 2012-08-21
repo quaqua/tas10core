@@ -1,23 +1,23 @@
-# creIO
+# tas10io
 a database mapper for SQL / MongoDB implementing a full
-content repository (used with CRESYS). The mapper modules
-has been detached from the CRESYS app-framework in order
+content repository (used with creSYS). The mapper modules
+has been detached from the creSYS app-framework in order
 to be used and developed independently.
 
 ## Installation
 
-	npm install creio
+	npm install tas10io
 
 ## Quick Usage
 
 Create a new connection
 
-	var creio = require('creio');
-	creio.open( 'mongo://localhost:27017/testCresys');
+	var tas10io = require('tas10io');
+	tas10io.connect( 'mongo://localhost:27017/testCresys');
 
 Get all documents in the repository regardeless of type:
 
-	var Document = require('creio/document');
+	var Document = require('tas10io/document');
 	Document.query().find( function( err, docs ){
 		docs.forEach( function( doc ){
 			console.log( doc.name );
@@ -26,16 +26,16 @@ Get all documents in the repository regardeless of type:
 
 Define a new Document
 
-	var DocumentModel = require('creio/document_model');
+	var DocumentModel = require('tas10io/model');
 
-	var MyDocument = function(){};
-	MyModel.inherits( DocumentModel );
+	function MyDocument(){};
+	MyDocument.inherits( DocumentModel );
 
-	MyModel.attributes( 'starts_at', 'ends_at', {'members': { value: [], type: 'array'}} );
+	MyDocument.schema( 'starts_at', 'ends_at', {'members': { value: [], type: 'array'}} );
 
 Insert a Document
 
-	m = new MyModel({ name: 'test' });
+	m = new MyDocument({ name: 'test' });
 	m.members.push('a');
 
 Saving the document to the repository

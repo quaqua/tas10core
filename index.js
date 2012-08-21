@@ -1,7 +1,7 @@
 var RepositoryLogger = require( __dirname + '/lib/repository_logger' );
 
 var _db
-  , _logfile = './creio.log'
+  , _logfile = './tas10io.log'
   , _Model = require( __dirname + '/lib/model' );
 
 module.exports.connect = function( url ){

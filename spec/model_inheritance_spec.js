@@ -2,12 +2,12 @@ var vows = require('vows')
   , assert = require('assert')
   , Model = require( __dirname + '/../lib/model' )
 
-var CreioString = require( __dirname + '/../lib/props/creio_string' )
-  , CreioInt = require( __dirname + '/../lib/props/creio_int' )
-  , CreioArray = require( __dirname + '/../lib/props/creio_array' )
-  , CreioObject = require( __dirname + '/../lib/props/creio_object' )
-  , CreioDateTime = require( __dirname + '/../lib/props/creio_datetime' )
-  , CreioBoolean = require( __dirname + '/../lib/props/creio_boolean' );
+var Tas10String = require( __dirname + '/../lib/props/tas10_string' )
+  , Tas10Int = require( __dirname + '/../lib/props/tas10_int' )
+  , Tas10Array = require( __dirname + '/../lib/props/tas10_array' )
+  , Tas10Object = require( __dirname + '/../lib/props/tas10_object' )
+  , Tas10DateTime = require( __dirname + '/../lib/props/tas10_datetime' )
+  , Tas10Boolean = require( __dirname + '/../lib/props/tas10_boolean' );
 
 vows.describe('Model inheritance').addBatch({
 
@@ -27,47 +27,47 @@ vows.describe('Model inheritance').addBatch({
 
       "name": function( Plain ){
         assert.isObject( Plain.new()._props.name );
-        assert.instanceOf( Plain.new()._props.name, CreioString );
+        assert.instanceOf( Plain.new()._props.name, Tas10String );
       },
 
       "className": function( Plain ){
         assert.isObject( Plain.new()._props.className );
-        assert.instanceOf( Plain.new()._props.className, CreioString );
+        assert.instanceOf( Plain.new()._props.className, Tas10String );
       },
 
       "acl": function( Plain ){
         assert.isObject( Plain.new()._props.acl );
-        assert.instanceOf( Plain.new()._props.acl, CreioObject );
+        assert.instanceOf( Plain.new()._props.acl, Tas10Object );
       },
 
       "labels": function( Plain ){
         assert.isObject( Plain.new()._props.labels );
-        assert.instanceOf( Plain.new()._props.labels, CreioArray );
+        assert.instanceOf( Plain.new()._props.labels, Tas10Array );
       },
 
       "history": function( Plain ){
         assert.isObject( Plain.new()._props.history );
-        assert.instanceOf( Plain.new()._props.history, CreioArray );
+        assert.instanceOf( Plain.new()._props.history, Tas10Array );
       }
 
     },
 
     "Plain can define custom properties": {
 
-      "CreioString property": function( Plain ){
+      "Tas10String property": function( Plain ){
         Plain.schema('description');
         assert.isObject( Plain.schema().description );
         assert.isUndefined( Plain.new().description ); // due we did not set a default value
       },
 
-      "CreioString property explicitely declaration": function( Plain ){
-        Plain.schema({ desc2: CreioString });
+      "Tas10String property explicitely declaration": function( Plain ){
+        Plain.schema({ desc2: Tas10String });
         assert.isObject( Plain.schema().desc2 );
         assert.isUndefined( Plain.new().desc2 ); // due we did not set a default value
       },
 
-      "CreioString property with options": function( Plain ){
-        Plain.schema({ desc3: { type: CreioString, default: 'description' }});
+      "Tas10String property with options": function( Plain ){
+        Plain.schema({ desc3: { type: Tas10String, default: 'description' }});
         assert.isObject( Plain.schema().desc3 );
         assert.isString( Plain.new().desc3 );
       }
@@ -75,7 +75,7 @@ vows.describe('Model inheritance').addBatch({
     },
 
     "baseSchema properties are 'protected'": function( Plain ){
-      assert.throws( function(){ Plain.schema({ acl: {type: CreioString} }); }, Error );
+      assert.throws( function(){ Plain.schema({ acl: {type: Tas10String} }); }, Error );
     },
 
     "className of Plain is 'Plain'": function( Plain ){
