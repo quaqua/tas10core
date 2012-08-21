@@ -2,7 +2,7 @@
   "private": true,
   "name": "tas10io",
   "preferGlobal": "true",
-  "version": "0.99.1",
+  "version": "1.0.0",
   "author": "thorsten zerha <thorsten.zerha@tastenwerk.com>",
   "description": "tas10io is a database mapper to SQL or MONGO with content repository functionality",
   "scripts": {

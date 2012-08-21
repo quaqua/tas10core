@@ -19,11 +19,11 @@ vows.describe('Mongo basics').addBatch({
 }).addBatch({
 
 	"Plain Document has a collectionName": function(){
-		assert.equal( Plain.collectionName(), 'plains' );
+		assert.equal( Plain.collectionName(), 'documents' );
 	},
 
 	"Plain Document has an open collection": function(){
-		assert.equal( Plain.collection().collectionName, 'plains' );
+		assert.equal( Plain.collection().collectionName, 'documents' );
 	},
 
 	"Plain Document can look up for any matches in the repository": {
