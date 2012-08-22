@@ -12,14 +12,12 @@
 // outside the tas10core exmamples directory, you should require
 //
 // var tas10core = require('tas10core');
-// var Model = require('tas10core/lib/model');
 //
 // here we do
 var tas10core = require('../index');
-var Model = require('../lib/model');
+var Model = tas10core.Model;
 
 tas10core.connect('mongodb://localhost:27017/test_tas10core');
-
 
 function MyDoc(){}
 MyDoc.inherits( Model );
