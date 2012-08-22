@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+  , path = require('path')
+  , markdox = require('markdox');
+
+var basedir = __dirname + '/../lib';
+var outdir = __dirname + '/../doc';
+
+var files = [];
+
+if( !fs.existsSync( outdir ) )
+	fs.mkdirSync( outdir );
+
+function parseDirectory( dir ){
+
+	var stats = fs.readdirSync( dir );
+
+	for( var i in stats ){
+		var file = path.normalize( dir + '/' + stats[i]);
+		
+		var filename = path.extname( file )
+		  , filearr = filename.split('.')
+
+		if( fs.statSync(file).isDirectory() )
+			parseDirectory(file );
+
+		else if( filearr.length > 1 && filearr[1] === 'js' )
+			files.push( file );
+
+	}
+
+}
+
+parseDirectory( basedir );
+
+markdox.process(files, outdir + '/index.md', function(){
+  console.log(' finished');
+});
+

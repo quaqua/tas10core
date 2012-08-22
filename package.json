@@ -1,12 +1,13 @@
 {
   "private": true,
-  "name": "tas10io",
+  "name": "tas10core",
   "preferGlobal": "true",
   "version": "1.0.0",
   "author": "thorsten zerha <thorsten.zerha@tastenwerk.com>",
-  "description": "tas10io is a database mapper to SQL or MONGO with content repository functionality",
+  "description": "tas10core is a database mapper to SQL or MONGO with content repository functionality",
   "scripts": {
-    "test": "vows --spec spec/*_spec.js spec/**/*_spec.js"
+    "test": "vows --spec spec/*_spec.js spec/**/*_spec.js",
+    "doc": "./bin/doc_generator"
   },
   "dependencies" : {
     "mongodb"  :  "1.x",
@@ -15,7 +16,8 @@
     "sha1": "*"
   },
   "devDependencies": {
-    "vows"    :  "*"
+    "vows"    :  "*",
+    "markdox": "*"
   },
   "license": "GPL-3"
 }

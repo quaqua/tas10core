@@ -1,7 +1,7 @@
 var RepositoryLogger = require( __dirname + '/lib/repository_logger' );
 
 var _db
-  , _logfile = './tas10io.log'
+  , _logfile = './tas10core.log'
   , _Model = require( __dirname + '/lib/model' )
   , _Analytics = require( __dirname + '/lib/analytics' );
 
