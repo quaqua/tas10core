@@ -22,6 +22,9 @@ module.exports.connect = function( url ){
 	} else if( url.indexOf('sqlite://') === 0 )
 		console.log("sqlite is not implemented yet!");
 
+	if( _db )
+		console.log('[tas10core] connection to \'' + url + '\' established')
+
 }
 
 module.exports.db = function db(){ return _db(); };
