@@ -12,6 +12,7 @@ var Model = require('../../lib/model')
 
 function Plain(){}
 Plain.inherits( Model );
+Plain.schema({a: {type: tas10core.propDefinitions.Tas10String, default: function(){ return 'a'} }} );
 
 function Soil(){}
 Soil.inherits( Model );
@@ -80,6 +81,13 @@ vows.describe('Lookup with Document object').addBatch({
 		}
 
 	}
+}).addBatch({
+
+	"Soil has no schema value from Plain": function(){
+		assert.equal( Plain.new().a, 'a' );
+		assert.isUndefined( Soil.new().a )
+	}
+
 }).addBatch({
 
 	"Finding all Soil documents": {

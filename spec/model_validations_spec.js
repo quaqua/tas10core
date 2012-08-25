@@ -78,5 +78,16 @@ vows.describe('Model Validations').addBatch({
 			assert.deepEqual( doc.errors, {} );
 		})
 	}
+}).addBatch({
+
+	"Soil does not have validations set as Plain has got set": function(){
+
+		function Soil(){}
+		Soil.inherits( Model );
+
+		assert.equal( Plain.validations.length, 5 );
+		assert.equal( Soil.validations.length, 1 );
+
+	}
 
 }).export(module);

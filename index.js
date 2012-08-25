@@ -49,6 +49,15 @@ module.exports.Model = _Model;
 module.exports.getModel = function(){ return _Model; };
 module.exports.getUser = function(){ return _User; };
 module.exports.getGroup = function(){ return _Group; };
-module.exports.getDocument = function(){ _Document; };
-module.exports.getAnalytics = function(){ _Analytics; };
+module.exports.getDocument = function(){ return _Document; };
+module.exports.getAnalytics = function(){ return _Analytics; };
 module.exports.getQuery = function(){ return require( __dirname + '/lib/adapters/mongo/query' ); }
+
+module.exports.propDefinitions = {
+	Tas10Array: require( __dirname + '/lib/props/tas10_array'),
+	Tas10Boolean: require( __dirname + '/lib/props/tas10_boolean'),
+	Tas10DateTime: require( __dirname + '/lib/props/tas10_datetime'),
+	Tas10Int: require( __dirname + '/lib/props/tas10_int'),
+	Tas10Object: require( __dirname + '/lib/props/tas10_object'),
+	Tas10String: require( __dirname + '/lib/props/tas10_string')
+}
